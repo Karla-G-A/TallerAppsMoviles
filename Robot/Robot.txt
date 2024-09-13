@@ -1,0 +1,123 @@
+public class Robot {
+    private Manos manos;
+    private Piernas piernas;
+    private Torso torso;
+    private Cabeza cabeza;
+
+    public Robot() {
+        this.manos = new Manos();
+        this.piernas = new Piernas();
+        this.torso = new Torso();
+        this.cabeza = new Cabeza();
+    }
+
+    public void mostrarDetalles() {
+        System.out.println("Detalles del Robot:");
+        this.manos.mostrarInfo();
+        this.piernas.mostrarInfo();
+        this.torso.mostrarInfo();
+        this.cabeza.mostrarInfo();
+    }
+
+    public void aplicarOutfit(Outfit outfit) {
+        System.out.println("Aplicando el outfit: " + outfit.getNombre());
+    }
+
+    public static void main(String[] args) {
+        Robot robot = new Robot();
+        robot.mostrarDetalles();
+        Outfit tunica = new Tunica();
+        robot.aplicarOutfit(tunica);
+    }
+}
+
+
+public class Piernas {
+    private int longitud = 90; 
+    private int fuerza = 100; 
+    
+    public void mostrarInfo() {
+        System.out.println("Piernas con longitud de " + this.longitud + " cm y fuerza de " + this.fuerza);
+    }
+}
+
+
+
+public class Manos {
+    private int dedos = 5;
+    private String tipoDeUñas = "Cortas";
+
+    public void mostrarInfo() {
+        System.out.println("Manos con " + this.dedos + " dedos y uñas " + this.tipoDeUñas);
+    }
+}
+
+
+
+
+public class Torso {
+    private String material = "Metal";
+    private int resistencia = 200;  
+
+    public void mostrarInfo() {
+        System.out.println("Torso de material " + this.material + " con resistencia de " + this.resistencia);
+    }
+}
+
+
+
+
+
+
+public class Cabeza {
+    private String colorDeOjos = "Azules";
+    private boolean tieneCabello = true;
+
+    public void mostrarInfo() {
+        String tipoDeCabello = this.tieneCabello ? "tiene cabello" : "sin cabello";
+        System.out.println("Cabeza con ojos " + this.colorDeOjos + " y " + tipoDeCabello);
+    }
+}
+
+
+
+public abstract class Outfit {
+    
+    public abstract String getNombre();
+}
+
+
+
+
+public class Tunica extends Outfit {
+    private String color = "Negro";
+
+    @Override
+    public String getNombre() {
+        return "Túnica de color " + this.color;
+    }
+}
+
+
+
+
+public class Varita extends Outfit {
+    private String material = "Madera de roble";
+
+    @Override
+    public String getNombre() {
+        return "Varita de " + this.material;
+    }
+}
+
+
+
+
+public class Escoba extends Outfit {
+    private String marca = "Nimbus 2000";
+
+    @Override
+    public String getNombre() {
+        return "Escoba marca " + this.marca;
+    }
+}
